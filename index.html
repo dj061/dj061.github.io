@@ -3,9 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>这是一个测试</title>
 </head>
 <body>
-    你能看见吗？
-</body>
+    你能看到吗？
+    <div id="app">
+        <h3>lamb的书架</h3>
+       <ul>
+        <li v-for="(item) in booksList" :key=”item.id”>
+         <span>{{item.name}}</span>
+       <span>{{item.author}}</span>
+         <button @click="del(item.id)">删除</button>
+           </li>
+           </ul>
+           </div>
+        </body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+        <script>
+          const app=new Vue({
+           el:'#app', //通过el配置选择器，指定vue管理的是那个盒子
+            data:{ //通过data提供渲染的数据
+            booksList:[
+        {id:1,name:"《书1》",author:"作者1"},
+         {id:2,name:"《书2》",author:"作者2"},
+         {id:3,name:"《书3》",author:"作者3"},
+          {id:4,name:"《书4》",author:"作者4"},
+         {id:5,name:"《书5》",author:"作者5"},
+         ] 
+        },
+          methods:{
+        del(id){
+        this.booksList=this.booksList.filter(item=>item.id!==id)//不会改变原数列
+       }
+        }
+    })
+    </script>
 </html>
